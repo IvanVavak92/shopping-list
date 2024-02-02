@@ -31,4 +31,11 @@ public class MainController {
         model.addAttribute("shopItems", fromCheapest);
         return "home";
     }
+
+    @GetMapping("/contains-nike")
+    public String filterItemsWithNike(Model model) {
+        List<ShopItem> nikeItems = shopItemService.filterNike();
+        model.addAttribute("shopItems", nikeItems);
+        return "home";
+    }
 }

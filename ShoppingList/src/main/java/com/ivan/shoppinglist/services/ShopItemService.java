@@ -37,5 +37,14 @@ public class ShopItemService {
                 .collect(Collectors.toList());
     }
 
+    public boolean containsNike(String string) {
+        return string.toLowerCase().contains("nike");
+    }
+
+    public List<ShopItem> filterNike() {
+        return shopItems.stream()
+                .filter(item -> containsNike(item.getDescription()) || containsNike(item.getName()))
+                .collect(Collectors.toList());
+    }
 
 }
