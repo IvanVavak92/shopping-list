@@ -6,7 +6,28 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-
+    <header>
+        <h1>My shop</h1>
+        <nav th:replace="~{fragments/nav :: navigationFragment}"></nav>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity of stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="shopItem, iter : ${shopItems}">
+                <td th:text="${shopItem.name}"></td>
+                <td th:text="${shopItem.description}"></td>
+                <td th:text="${shopItem.price}"></td>
+                <td th:text="${shopItem.quantityOfStock}"></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
