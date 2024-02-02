@@ -8,6 +8,7 @@
 <body>
     <header>
         <h1>My shop</h1>
+        <hr>
         <nav th:replace="~{fragments/nav :: navigationFragment}"></nav>
     </header>
     <table>
@@ -23,13 +24,13 @@
             <tr th:if="${searchResult == null} " th:each="shopItem, iter : ${shopItems}">
                 <td th:text="${shopItem.name}"></td>
                 <td th:text="${shopItem.description}"></td>
-                <td th:text="${shopItem.price}"></td>
+                <td th:text="${shopItem.price} + ' Kč'"></td>
                 <td th:text="${shopItem.quantityOfStock}"></td>
             </tr>
             <tr th:if="${searchResult != null} " th:each="shopItem, iter : ${searchResult}">
                 <td th:text="${shopItem.name}"></td>
                 <td th:text="${shopItem.description}"></td>
-                <td th:text="${shopItem.price}"></td>
+                <td th:text="${shopItem.price} + ' Kč'"></td>
                 <td th:text="${shopItem.quantityOfStock}"></td>
             </tr>
         </tbody>
