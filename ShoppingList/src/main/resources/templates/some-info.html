@@ -10,5 +10,6 @@
     <h1>My shop</h1>
     <nav th:replace="~{fragments/nav :: navigationFragment}"></nav>
     <h2 th:if="${pageType == 'average'}" th:text="'Average stock: ' + ${averageStock}"></h2>
+    <h2 th:if="${pageType == 'mostExpensive'}" th:text="'Most expensive item: ' + ${mostExpensiveItem.name}"></h2>
 </header>
 </body>

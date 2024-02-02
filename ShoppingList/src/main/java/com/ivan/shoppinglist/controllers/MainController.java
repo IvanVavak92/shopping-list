@@ -39,11 +39,25 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/some-stock-info")
+    @GetMapping("/average-stock")
     public String AveragePrice(Model model) {
         double aver = shopItemService.averageStock();
         model.addAttribute("averageStock", aver);
         model.addAttribute("pageType", "average");
-        return "some-stock-info";
+        return "some-info";
     }
+
+    @GetMapping("/most-expensive")
+    public String MostExpensiveItemForSomeInfo(Model model) {
+        ShopItem mostExpensiveItem = shopItemService.findMostExpensiveItem();
+        model.addAttribute("mostExpensiveItem", mostExpensiveItem);
+        model.addAttribute("pageType", "mostExpensive");
+        return "some-info";
+    }
+
+    @GetMapping("/some-info")
+    public String someInfo() {
+        return "some-info";
+    }
+
 }
