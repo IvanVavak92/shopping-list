@@ -60,4 +60,11 @@ public class ShopItemService {
                 .max(Comparator.comparingDouble(ShopItem::getPrice))
                 .orElse(null);
     }
+
+    public List<ShopItem> searchItems(String keyword) {
+        return shopItems.stream()
+                .filter(item -> item.getName().toLowerCase().contains(keyword.toLowerCase()) ||
+                        item.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
+    }
 }

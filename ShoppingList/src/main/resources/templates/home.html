@@ -20,7 +20,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="shopItem, iter : ${shopItems}">
+            <tr th:if="${searchResult == null} " th:each="shopItem, iter : ${shopItems}">
+                <td th:text="${shopItem.name}"></td>
+                <td th:text="${shopItem.description}"></td>
+                <td th:text="${shopItem.price}"></td>
+                <td th:text="${shopItem.quantityOfStock}"></td>
+            </tr>
+            <tr th:if="${searchResult != null} " th:each="shopItem, iter : ${searchResult}">
                 <td th:text="${shopItem.name}"></td>
                 <td th:text="${shopItem.description}"></td>
                 <td th:text="${shopItem.price}"></td>
