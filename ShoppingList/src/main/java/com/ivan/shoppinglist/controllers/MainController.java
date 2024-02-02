@@ -20,8 +20,15 @@ public class MainController {
 
     @GetMapping("/only-available")
     public String availablePage(Model model) {
-        List<ShopItem> availableItems = shopItemService.getAvailableItems();
+        List<ShopItem> availableItems = shopItemService.filterAvailable();
         model.addAttribute("shopItems", availableItems);
+        return "home";
+    }
+
+    @GetMapping("/cheapest-first")
+    public String cheapestFirst(Model model) {
+        List<ShopItem> fromCheapest = shopItemService.getSortedItemsByPrice();
+        model.addAttribute("shopItems", fromCheapest);
         return "home";
     }
 }

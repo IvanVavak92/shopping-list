@@ -3,6 +3,7 @@ package com.ivan.shoppinglist.services;
 import com.ivan.shoppinglist.models.ShopItem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,14 +25,17 @@ public class ShopItemService {
         return shopItems;
     }
 
-    public List<ShopItem> filterAvailable(List<ShopItem> shopItems) {
+    public List<ShopItem> filterAvailable() {
         return shopItems.stream()
                 .filter(item -> item.getQuantityOfStock() > 0)
                 .collect(Collectors.toList());
     }
 
-    public List<ShopItem> getAvailableItems() {
-        List<ShopItem> allItems = getShopItems();
-        return filterAvailable(allItems);
+    public List<ShopItem> getSortedItemsByPrice() {
+        return shopItems.stream()
+                .sorted(Comparator.comparingDouble(ShopItem::getPrice))
+                .collect(Collectors.toList());
     }
+
+
 }
