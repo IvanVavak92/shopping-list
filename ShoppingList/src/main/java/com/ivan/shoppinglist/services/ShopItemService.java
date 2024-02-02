@@ -17,7 +17,7 @@ public class ShopItemService {
         shopItems.add(new ShopItem("Printer", "Some HP printer", 3000, 2));
         shopItems.add(new ShopItem("Coca cola", "0.5 l standard coke", 25, 0));
         shopItems.add(new ShopItem("Wokin",
-                "Chicken with fried rice nad Wokin sauce",119, 100));
+                "Chicken with fried rice nad Wokin sauce", 119, 100));
         shopItems.add(new ShopItem("T-shirt", "Blue t-shirt", 300, 1));
     }
 
@@ -47,4 +47,17 @@ public class ShopItemService {
                 .collect(Collectors.toList());
     }
 
+    public double averageStock() {
+        return shopItems.stream()
+                .mapToInt(ShopItem::getQuantityOfStock)
+                .average()
+                .orElse(0.0);
+    }
+
+    public ShopItem findMostExpensiveItem() {
+        return shopItems.stream()
+                .filter(item -> item.getQuantityOfStock() > 0)
+                .max(Comparator.comparingDouble(ShopItem::getPrice))
+                .orElse(null);
+    }
 }

@@ -7,6 +7,10 @@ public class ShopItem {
     private double price;
     private int quantityOfStock;
 
+    public ShopItem() {
+
+    }
+
     public ShopItem(String name, String description, double price, int quantityOfStock) {
         this.name = name;
         this.description = description;

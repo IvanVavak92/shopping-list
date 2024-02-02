@@ -38,4 +38,12 @@ public class MainController {
         model.addAttribute("shopItems", nikeItems);
         return "home";
     }
+
+    @GetMapping("/some-stock-info")
+    public String AveragePrice(Model model) {
+        double aver = shopItemService.averageStock();
+        model.addAttribute("averageStock", aver);
+        model.addAttribute("pageType", "average");
+        return "some-stock-info";
+    }
 }
